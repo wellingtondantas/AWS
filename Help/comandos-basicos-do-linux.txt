@@ -1,0 +1,38 @@
+#COMANDOS BÁSICOS DO LINUX
+
+
+Acessar no modo Root
+[sudo su]
+
+Atualizar o servidor com pacotes, updates.
+[sudo yum update]
+
+Instalar o apache
+[sudo yum install httpd]
+
+Inicia o servidor apache
+[service httpd start]
+
+Verificar o status do servidor
+[service httpd status]
+
+Acessar a pasta /var/www/html/
+[cd /var/www/html/]
+
+Editor/Criar/Acessar arquivo simples
+[nano index.html]
+
+Verificar todos os arquivos da pasta
+[ls]
+
+Voltar pasta
+[cd ..]
+
+Deletar pasta
+[rm -rf .nomedapasta]
+
+Deletar arquivo
+[rm -rf nomedoarquivo]
+
+Verificar se pasta existe
+[cd .nomedapasta]

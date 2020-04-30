@@ -1,0 +1,60 @@
+COMANDOS INICIAIS
+
+Acessar no modo Root
+sudo su
+
+Atualizar o servidor com pacotes, updates.
+[ec2-user ~]$ sudo yum update -y
+
+
+INSTALAÇÃO DO APACHE E PHP
+
+1. Instalação do Apache 2.4
+[ec2-user ~]$ sudo yum install httpd24
+
+2. Instalação do PHP e pacotes
+(Opção PHP5) 
+[ec2-user ~]$ sudo yum install -y httpd24 php56 php56-mysqlnd
+
+(Opção PHP7) 
+[ec2-user ~]$ sudo yum install php70
+[ec2-user ~]$ sudo yum install php70-gd 
+[ec2-user ~]$ sudo yum install php70-imap 
+[ec2-user ~]$ sudo yum install php70-mbstring 
+[ec2-user ~]$ sudo yum install php70-mysqlnd 
+[ec2-user ~]$ sudo yum install php70-opcache 
+[ec2-user ~]$ sudo yum install php70-pdo 
+[ec2-user ~]$ sudo yum install php70-pecl-apcu
+
+3. Inicia o Apache
+[ec2-user ~]$ sudo service httpd start
+Starting httpd:                                        [  OK  ]
+
+4. Configuração do Apache para inicializar no boot da instância
+[ec2-user ~]$ sudo chkconfig httpd on
+
+5. Digite o seu Elastic IP (45.124.345.90) no seu browser e navegue. Você deverá ver a página de teste do Apache. Se não conseguir, verifique se o Apache está sendo executado e se você liberou a porta HTTP (80) no security group
+
+6. Dar permissões aos grupos
+[ec2-user ~]$ sudo groupadd www 
+[ec2-user ~]$ sudo usermod -a -G www ec2-user 
+[ec2-user ~]$ exit
+
+
+7. Reconectar a instância
+[ec2-user ~]$ groups 
+ec2-user wheel www
+
+8. Mude a propriedade de /var/www para o grupo www e adicione permissão de escrita para este grupo
+[ec2-user ~]$ sudo chown -R root:www /var/www 
+[ec2-user ~]$ sudo chmod 2775 /var/www 
+[ec2-user ~]$ find /var/www -type d -exec sudo chmod 2775 {} + 
+[ec2-user ~]$ find /var/www -type f -exec sudo chmod 0664 {} +
+
+9. Para testar nosso servidor PHP, vamos gerar um arquivo de teste e acessá-lo pelo navegador
+[ec2-user ~]$ echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+
+10. Verificar o Elastic IP (45.124.345.90/phpinfo.php) no seu browser e navegue
+
+11. Se funcionou, o php está configurado corretamente. apague o arquivo phpinfo.php
+[ec2-user ~]$ rm /var/www/html/phpinfo.php

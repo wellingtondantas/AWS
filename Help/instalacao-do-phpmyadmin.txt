@@ -1,0 +1,48 @@
+INSTALAÇÃO DO PHPMYADMIN
+
+1. Instale as dependências necessárias.
+[ec2-user ~]$ sudo yum install php70-mbstring.x86_64 php70-zip.x86_64 -y
+
+2. Reinicie o Apache.
+[ec2-user ~]$ sudo service httpd restart 
+Stopping httpd:                                          [  OK  ] 
+Starting httpd:                                            [  OK  ]
+
+3. Navegue até o diretório base do Apache em /var/www/html
+[ec2-user ~]$ cd /var/www/html 
+[ec2-user html]$
+
+4. Baixar o phpmyadmin
+[ec2-user html]$ wget https://files.phpmyadmin.net/phpMyAdmin/4.9.3/phpMyAdmin-4.9.3-all-languages.zip 
+
+5. Extrair o arquivo .zip
+[ec2-user html]$ unzip phpMyAdmin-4.9.3-all-languages.zip
+
+6. Mover a pasta descompactada para phpMyAdmin
+[ec2-user html]$ mv phpMyAdmin-4.9.3-all-languages phpMyAdmin
+
+7. Criar o arquivo config.inc.php
+[ec2-user html]$ cd phpMyAdmin
+[ec2-user phpMyAdmin]$ nano config.inc.php
+
+8. Colar e alterar as informações de ENDPOINT abaixo
+
+<?php
+/* Authentication type */
+$i++;
+$cfg['Servers'][$i]['verbose'] = 'Amazon RDS';
+$cfg['Servers'][$i]['host'] = 'Seu Endpoint';
+$cfg['Servers'][$i]['port'] = '3306';
+$cfg['Servers'][$i]['socket'] = '';
+$cfg['Servers'][$i]['connect_type'] = 'tcp';
+$cfg['Servers'][$i]['extension'] = 'mysqli';
+$cfg['Servers'][$i]['auth_type'] = 'cookie';
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+
+$cfg['blowfish_secret'] = 'qtdRoGmbc9{8IZr323xYcSN]0s)r$9b_JUnb{~Xz'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
+
+$cfg['TempDir'] = 'tmp';
+?>
+
+9. Criar a pasta tmp e permitir acesso
+[ec2-user phpMyAdmin]$ mkdir tmp && chmod 777 tmp
