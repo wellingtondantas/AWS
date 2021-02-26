@@ -1,0 +1,117 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Curso Rekognition</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        Analise de Imagens com Rekognition
+      </h1>
+    </header>
+
+    <main>
+      
+      <form action="/detectarLabels" method="post" enctype="multipart/form-data">         
+          <input type="file" id="myfile" name="myfile"/>
+          <button type="submit">Enviar Arquivo para Análise de Labels</button>
+      </form>
+
+      <form action="/detectarModeracao" method="post" enctype="multipart/form-data">         
+          <input type="file" id="myfile_moderar" name="myfile_moderar"/>
+          <button type="submit">Enviar Arquivo para Moderação</button>
+      </form>
+      <br>
+      
+      <form action="/analiseFacial" method="post" enctype="multipart/form-data">         
+          <input type="file" id="myfile_facial" name="myfile_facial"/>
+          <button type="submit">Enviar Arquivo para Analise Facial</button>
+      </form>
+      
+      <form action="/reconherCelebridade" method="post" enctype="multipart/form-data">         
+          <input type="file" id="myfile_celebridade" name="myfile_celebridade"/>
+          <button type="submit">Enviar Arquivo para Reconhecimento Celebridade</button>
+      </form>
+      <br>
+      
+       <form action="/reconherTexto" method="post" enctype="multipart/form-data">         
+          <input type="file" id="myfile_texto" name="myfile_texto"/>
+          <button type="submit">Enviar Arquivo para Reconhecimento de Texto</button>
+      </form>
+      
+      <form action="/compararFaces" method="post" enctype="multipart/form-data">         
+          <input type="file" id="myfile_compara" name="myfile_compara" multiple/>
+          <button type="submit">Enviar Arquivos para Comparar Faces</button>
+      </form>
+      <br>
+      <form action="/indexar" method="post" enctype="multipart/form-data">         
+          <input type="file" id="myfile_index" name="myfile_index"/>
+          <button type="submit">Indexar Imagem</button>
+      </form>
+
+      <form action="/procurar" method="post" enctype="multipart/form-data">         
+          <input type="file" id="myfile_procurar" name="myfile_procurar"/>
+          <button type="submit">Procurar Imagem na Collection</button>
+      </form>
+      <br>
+      <form action="/detectarLabelS3" method="post" >         
+          <input type="text" id="foto" name="foto"/>
+          <button type="submit">Analise Imagem no S3</button>
+      </form>
+      <form action="/analiseFacialS3" method="post" >         
+          <input type="text" id="facial" name="facial"/>
+          <button type="submit">Analise Facial de Imagem no S3</button>
+      </form>
+      <br>
+       <form action="/videoLabel" method="post" >         
+          <input type="text" id="video_label" name="video_label"/>
+          <button type="submit">Analise de Labels em Video</button>
+      </form>
+      <form action="/getvideoLabel" method="post" >         
+          <input type="text" id="jobid_label" name="jobid_label"/>
+          <button type="submit">Recuperar Analise de Labels em Video</button>
+      </form>
+      <br>
+      <form action="/videoCelebridade" method="post" >         
+          <input type="text" id="video_celebridade" name="video_celebridade"/>
+          <button type="submit">Analise de Celebridades em Video</button>
+      </form>
+      <form action="/getvideoCelebridade" method="post" >         
+          <input type="text" id="jobid_celebridade" name="jobid_celebridade"/>
+          <button type="submit">Recuperar Analise de Celebridades em Video</button>
+      </form>
+    
+      
+    </main>
+
+    <footer>
+      Made with <a href="https://glitch.com">Glitch</a>!
+    </footer>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+
+  </body>
+</html>
