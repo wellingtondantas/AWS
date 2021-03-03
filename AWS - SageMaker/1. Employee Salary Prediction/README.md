@@ -1,4 +1,4 @@
-# Project 1 - Employee Salary Prediction Using AWS SegeMaker Linear Learner
+# Project 1 - Employee Salary Predictions Using AWS SageMaker Linear Learner
 
 
 
