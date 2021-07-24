@@ -83,6 +83,20 @@ ubuntu@ip-000-00-00-000:~$ python3 app.py
 
 3. Cole no navegador da sua preferência com a porta :8080
 
+## Outras ações
+
+1. Ver processos rodando
+```
+ubuntu@ip-000-00-00-000:~$ ps xw
+```
+2. Fechar um processo rodando
+```
+ubuntu@ip-000-00-00-000:~$ kill PID
+```
+3. Fazer processo rodar em background
+```
+ubuntu@ip-000-00-00-000:~$ nohup python3 app.py &
+```
 
 
 
